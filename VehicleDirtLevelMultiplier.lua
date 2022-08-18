@@ -25,7 +25,8 @@ JM36.CreateThread(function()
 				LastVehicleDirtLevel = VehicleDirtLevel
 			end
 			if VehicleDirtLevel > LastVehicleDirtLevel then
-				LastVehicleDirtLevel = math_min(VehicleDirtLevel * Multiplier, 15.0)
+				VehicleDirtLevel = (VehicleDirtLevel - LastVehicleDirtLevel) * Multiplier
+				LastVehicleDirtLevel = math_min(LastVehicleDirtLevel + VehicleDirtLevel, 15.0)
 				SetVehicleDirtLevel(Vehicle_Id, LastVehicleDirtLevel)
 			end
 		end
